@@ -3,5 +3,5 @@ public enum TokenType {
     IDENTIFIER,
     EQUALS,
 
-
+    VAR,
 }
