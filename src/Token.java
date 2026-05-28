@@ -6,6 +6,10 @@ public class Token {
     public String value;
     public TokenType type;
 
+    @Override
+    public String toString(){
+        return "Value: " + this.value + " Type: " + this.type;
+    }
 
     public Token(String val, TokenType Type){
         this.value = val;
@@ -22,10 +26,38 @@ public class Token {
                 tokens.add(new Token(src[i++], TokenType.OPEN_PAREN));
             else if (src[i].equals(")"))
                 tokens.add(new Token(src[i++], TokenType.CLOSE_PAREN));
-            else if (src[i].equals("+") || src[i].equals("-") || src[i].equals("*") || src[i].equals("/") )
+            else if (src[i].equals("+") || src[i].equals("-") ||
+                    src[i].equals("*") || src[i].equals("/") ||
+                    src[i].equals("<") || src[i].equals(">") || src[i].equals("|")
+                    || src[i].equals("&")
+            )
                 tokens.add(new Token(src[i++], TokenType.BINARY_OPERATOR));
             else if (src[i].equals("="))
                 tokens.add(new Token(src[i++], TokenType.EQUALS));
+            else if (src[i].equals("."))
+                tokens.add(new Token(src[i++], TokenType.PERIOD));
+            else if (src[i].equals(";"))
+                tokens.add(new Token(src[i++], TokenType.SEMICOLON));
+            else if (src[i].equals("{"))
+                tokens.add(new Token(src[i++], TokenType.OPEN_CURLY));
+            else if (src[i].equals("}"))
+                tokens.add(new Token(src[i++], TokenType.CLOSE_CURLY));
+            else if (src[i].equals("["))
+                tokens.add(new Token(src[i++], TokenType.OPEN_SQUARE));
+            else if (src[i].equals("]"))
+                tokens.add(new Token(src[i++], TokenType.CLOSE_SQAURE));
+            else if (src[i].equals("@"))
+                tokens.add(new Token(src[i++], TokenType.AT));
+            else if (src[i].equals("\""))
+                tokens.add(new Token(src[i++], TokenType.DOUBLE_QUOTE));
+            else if (src[i].equals(":"))
+                tokens.add(new Token(src[i++], TokenType.COLON));
+            else if (src[i].equals(","))
+                tokens.add(new Token(src[i++], TokenType.COMMA));
+            else if (src[i].equals("'"))
+                tokens.add(new Token(src[i++], TokenType.SINGLE_QUOTE));
+            else if (src[i].equals("\\"))
+                tokens.add(new Token(src[i++], TokenType.ESCAPE));
             else {
                 // handle multicharacter tokens
                 if (isInt(src[i])){
@@ -34,9 +66,9 @@ public class Token {
                         num += src[i++];
                     tokens.add(new Token(num, TokenType.NUMBER));
                 }
-                else if (isAlpha(src[i])){
+                else if (isAlpha(src[i]) || src[i].equals("_")){
                     var str = "";
-                    while (i < src.length && isAlpha(src[i]))
+                    while (i < src.length && (isAlpha(src[i]) || src[i].equals("_")))
                         str += src[i++];
                     // check if str is an identifier or a keyword
                     var type = TokenType.IDENTIFIER;

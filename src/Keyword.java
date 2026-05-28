@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Keyword {
-    public static Map<String, TokenType> map = new Map.of(
+    public static Map<String, TokenType> map = Map.of(
             "let", TokenType.VAR
 
     );
