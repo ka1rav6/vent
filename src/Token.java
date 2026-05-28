@@ -50,8 +50,8 @@ public class Token {
                     System.out.println("Unrecognised Character found: " + src[i]);
                     System.exit(1);
                 }
+            }
         }
         return tokens;
-        }
     }
 }
