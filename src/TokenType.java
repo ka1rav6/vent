@@ -2,6 +2,12 @@ public enum TokenType {
     NUMBER,
     IDENTIFIER,
     EQUALS,
-
+    BINARY_OPERATOR,
+    OPEN_PAREN,
+    CLOSE_PAREN,
+    OPEN_CURLY,
+    CLOSE_CURLY,
+    OPEN_SQUARE,
+    CLOSE_SQAURE,
     VAR,
 }
