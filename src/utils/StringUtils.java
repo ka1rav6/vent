@@ -11,4 +11,7 @@ public class StringUtils {
         var end = Character.codePointOf("9");
         return c > start && c < end;
     }
+    public static boolean isSkippable(String src){
+        return (src.equals(" ") || src.equals("\n") || src.equals("\t"));
+    }
 }

@@ -8,6 +8,7 @@ public enum TokenType {
     OPEN_CURLY,
     CLOSE_CURLY,
     OPEN_SQUARE,
+    KEYWORD,
     CLOSE_SQAURE,
     VAR,
 }
